@@ -1,0 +1,25 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>icon/robot-48.ico</file>
+    <file>icon/robot-32.ico</file>
+    <file>icon/send1.ico</file>
+    <file>icon/robot.ico</file>
+    <file>icon/send.ico</file>
+    <file>icon/sound.ico</file>
+    <file>icon/microphone-512.ico</file>
+    <file>icon/group-32.ico</file>
+    <file>icon/dashboard-5-48.ico</file>
+    <file>icon/account-logout-64.ico</file>
+    <file>icon/activity-feed-32.ico</file>
+    <file>icon/activity-feed-48.ico</file>
+    <file>icon/close-window-64.ico</file>
+    <file>icon/dashboard-5-32.ico</file>
+    <file>icon/group-48.ico</file>
+    <file>icon/machine_logo.ico</file>
+    <file>icon/menu-4-32.ico</file>
+    <file>icon/product-32.ico</file>
+    <file>icon/product-48.ico</file>
+    <file>icon/search-13-48.ico</file>
+    <file>icon/user-48.ico</file>
+  </qresource>
+</RCC>

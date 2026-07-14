@@ -1,0 +1,2 @@
+pyuic5.exe C:\Users\aislab\Desktop\工具機計畫project\工具機可視化介面\sidebar.ui -o C:\Users\aislab\Desktop\工具機計畫project\工具機可視化介面\sidebar.py
+pyrcc5.exe C:\Users\aislab\Desktop\工具機計畫project\工具機可視化介面\resource.qrc -o C:\Users\aislab\Desktop\工具機計畫project\工具機可視化介面\resource_rc.py
