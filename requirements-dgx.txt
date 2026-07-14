@@ -1,0 +1,40 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# DGX Spark (aarch64 + Blackwell GB10, sm_121) 專用相依清單  —  Python 3.11
+#
+# ⚠️  PyTorch 不在這份清單裡：由 setup_dgx_spark.sh 從 cu130 index 另外安裝
+#     （torch/torchvision/torchaudio --index-url https://download.pytorch.org/whl/cu130）
+#     千萬不要在這裡加 torch，否則會蓋掉 GPU 版本。
+#
+# 與原 requirements.txt 的差異見每行註解。
+# ─────────────────────────────────────────────────────────────────────────────
+
+# --- 為了與已訓練模型 / pickle 相容，版本鎖死，勿改 ---
+scikit-learn==1.6.1        # Random Forest_model.pkl、scaler_X.pkl、scaler_y.pkl 用此版本存的
+ultralytics==8.3.121       # yolo_real_best.pt
+stable-baselines3==2.4.0   # PPO_ur5_checkpoint_90000_steps.zip
+xgboost==2.1.4
+gymnasium==1.0.0
+
+# --- 為了 Python 3.11 / aarch64 有 wheel 而升版（原本是 3.9 的舊釘版）---
+numpy>=1.26,<2.3           # 原 1.24.4（3.11/torch2.9 需較新）
+pandas>=2.0,<2.3           # 原 1.4.4（1.4.4 無 cp311 wheel）
+scipy>=1.11                # 原 1.9.1（1.9.1 無 cp311 wheel）
+matplotlib>=3.8            # 原 3.5.2（3.5.2 無 cp311 wheel）
+Pillow>=10.4               # 原 9.2.0
+
+# --- 架構無關 / 已有 aarch64 cp311 wheel，維持原版 ---
+PyQt5==5.15.11
+opencv-python==4.10.0.84
+SpeechRecognition==3.10.4
+mysql-connector-python==9.0.0
+requests>=2.28.1
+langchain==0.2.16
+langchain-community==0.2.16
+langchain-core==0.2.39
+ollama==0.3.3
+
+# --- 硬體：UR 機械手臂（純 Python，但要連得到手臂才有作用）---
+urx==0.11.0
+
+# 註：pyrealsense2（RealSense 相機）不列於此，aarch64 常無現成 wheel，
+#     由 setup_dgx_spark.sh 以「盡力而為」方式安裝，失敗不影響其他套件。
