@@ -1,0 +1,26 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# UR5 實體 demo（pick_and_move.py）最小相依  —  DGX Spark / aarch64 / Python 3.11
+#
+# 只裝 pick_and_move.py 相依鏈真正需要的套件；不含 PyQt / MySQL / MATLAB /
+# langchain / ollama / pyrealsense2（那些是 GUI 0506_main.py 的相依，且 GUI 因
+# matlab.engine + MySQL 在 DGX Spark 上無法執行）。
+#
+# ⚠️ PyTorch 另外從 cu130 index 裝，勿加在這裡：
+#    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu130
+# ─────────────────────────────────────────────────────────────────────────────
+
+# --- UR5 手臂 + Robotiq 夾爪控制（demo 核心，最可能要從源碼編譯）---
+urx==0.11.0
+
+# --- 模型相容鎖版（勿改，否則載入 .pkl / PPO checkpoint 會出錯）---
+scikit-learn==1.6.1        # Random Forest_model.pkl、scaler_X.pkl、scaler_y.pkl
+stable-baselines3==2.4.0   # PPO_ur5_checkpoint_90000_steps.zip
+gymnasium==1.0.0           # rl.py 頂層 import
+
+# --- 數值 / 影像 / 繪圖（rl.py 與 wifi_tcp_helper.py 頂層 import 需要）---
+numpy>=1.26,<2.3
+opencv-python==4.10.0.84
+pandas>=2.0,<2.3
+matplotlib>=3.8
+Pillow>=10.4
+requests>=2.28.1
