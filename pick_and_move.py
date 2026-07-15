@@ -97,7 +97,7 @@ def execute_task(object_name):
     actual_joint_positions, actual_tool_pose = get_position(rob)
     orientation_position = [actual_tool_pose[3], actual_tool_pose[4], actual_tool_pose[5]]
     move_to(rob, [real_x_y_position[0][0], real_x_y_position[0][1], 0.258], orientation_position, tool_acc, tool_vel, tool_pose_tolerance)
-    move_to(rob, [real_x_y_position[0][0], real_x_y_position[0][1], 0.223], orientation_position, tool_acc, tool_vel, tool_pose_tolerance)
+    move_to(rob, [real_x_y_position[0][0], real_x_y_position[0][1], 0.160], orientation_position, tool_acc, tool_vel, tool_pose_tolerance)
     robotiqgrip.close_gripper()
 
   
@@ -112,22 +112,22 @@ def execute_task(object_name):
     print(f"{object_name} 夾取任務完成")
 
     #mir移動到夾取位置任務，,mir移動到要放置物體的點(重新設定要移動的點)
-    my_missions = ["pick2original"]  
-    run_missions(my_missions)
+    # my_missions = ["pick2original"]  
+    # run_missions(my_missions)
 
     #手臂把物體放到桌上姿態(需用robot_ur 重新設定)
-    move_joints(rob, [-0.5132926146136683, -1.201965634022848, 1.304290771484375, -1.708036247883932, -1.5829270521747034, 0.011480887420475483], joint_acc, joint_vel, joint_tolerance)
+    # move_joints(rob, [-0.5132926146136683, -1.201965634022848, 1.304290771484375, -1.708036247883932, -1.5829270521747034, 0.011480887420475483], joint_acc, joint_vel, joint_tolerance)
     robotiqgrip.open_gripper()
 
     #手臂拉回車子的箱子原點 (重新設定到mir箱子上方)
-    move_joints(rob, [3.17450213432312, -1.6387694517718714, 1.71696138381958, -1.713442627583639, -1.5831788221942347, 0.011456918902695179], joint_acc, joint_vel, joint_tolerance)
+    # move_joints(rob, [3.17450213432312, -1.6387694517718714, 1.71696138381958, -1.713442627583639, -1.5831788221942347, 0.011456918902695179], joint_acc, joint_vel, joint_tolerance)
 
 
     rob.close()  # 結束與機器手臂的連接
 
-     #mir移動到原本位置，mir移動到要夾取的點(重新設定要移動的點)
-    my_missions = ["back2desk"]  
-    run_missions(my_missions)
+    #  #mir移動到原本位置，mir移動到要夾取的點(重新設定要移動的點)
+    # my_missions = ["back2desk"]  
+    # run_missions(my_missions)
 
 
 
